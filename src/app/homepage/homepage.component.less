@@ -1,0 +1,71 @@
+// src/app/homepage/homepage.component.less
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mat-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .search-and-create-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .search-section,
+  .create-trail-section {
+    flex: 1;
+    padding: 20px;
+    margin: 0 10px;
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  h2,
+  h3 {
+    margin-bottom: 16px;
+  }
+  
+  .recent-hikes-section {
+    width: 100%;
+  }
+  
+  .hike-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  mat-grid-list {
+    width: 100%;
+  }
+  
+  mat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-card-image {
+    height: 160px;
+    object-fit: cover;
+  }
+  
