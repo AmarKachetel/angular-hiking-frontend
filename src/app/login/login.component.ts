@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-login',
   standalone: true,
   imports: [
     MatCardModule,
@@ -15,11 +15,11 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     RouterModule
   ],
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.less']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.less']
 })
-export class RegisterComponent {
+export class LoginComponent {
   constructor() {
-    console.log('RegisterComponent initialized');
+    console.log('LoginComponent initialized');
   }
 }

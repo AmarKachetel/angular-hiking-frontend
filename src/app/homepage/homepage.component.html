@@ -1,50 +1,39 @@
 <!-- src/app/homepage/homepage.component.html -->
+<div class="container">
+    <div class="content">
+        <div class="search-and-create-section">
+            <div class="search-section mat-elevation-z2">
+                <h2>Trouver une randonnée</h2>
+                <mat-form-field appearance="fill">
+                    <mat-label>Lieu ou n° de randonnée</mat-label>
+                    <input matInput placeholder="Entrez une localisation ou un numéro">
+                </mat-form-field>
+                <button mat-raised-button color="accent">Chercher</button>
+            </div>
 
-<mat-toolbar color="primary" class="mat-elevation-z4">
-    <span>Hiking Adventures</span>
-    <span class="spacer"></span>
-    <button mat-button>Outils</button>
-    <button mat-button>Randonnées</button>
-    <button mat-button>Aide</button>
-    <button mat-button>Club Visorando</button>
-    <button mat-button>Inscription</button>
-    <button mat-button>Connexion</button>
-  </mat-toolbar>
-  
-  <div class="content">
-    <div class="search-and-create-section">
-      <div class="search-section mat-elevation-z2">
-        <h2>Trouver une randonnée</h2>
-        <mat-form-field appearance="fill">
-          <mat-label>Lieu ou n° de randonnée</mat-label>
-          <input matInput placeholder="Entrez une localisation ou un numéro">
-        </mat-form-field>
-        <button mat-raised-button color="accent">Chercher</button>
-      </div>
-  
-      <div class="create-trail-section mat-elevation-z2">
-        <h3>Créez gratuitement vos propres circuits</h3>
-        <p>Choisissez votre fond de carte, tracez votre randonnée, et emportez-la avec vous !</p>
-        <button mat-raised-button color="primary">Tracer son circuit</button>
-      </div>
+            <div class="create-trail-section mat-elevation-z2">
+                <h3>Créez gratuitement vos propres circuits</h3>
+                <p>Choisissez votre fond de carte, tracez votre randonnée, et emportez-la avec vous !</p>
+                <button mat-raised-button color="primary">Tracer son circuit</button>
+            </div>
+        </div>
+
+        <div class="recent-hikes-section">
+            <h2>Derniers itinéraires</h2>
+            <mat-grid-list cols="2" gutterSize="16px">
+                <mat-grid-tile *ngFor="let hike of recentHikes" [colspan]="1" [rowspan]="1">
+                    <mat-card class="hike-card">
+                        <mat-card-header>
+                            <mat-card-title>{{ hike.title }}</mat-card-title>
+                            <mat-card-subtitle>{{ hike.location }}</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image [src]="hike.image" alt="{{ hike.title }}">
+                        <mat-card-content>
+                            <p>{{ hike.description }}</p>
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
     </div>
-  
-    <div class="recent-hikes-section">
-      <h2>Derniers itinéraires</h2>
-      <mat-grid-list cols="2" gutterSize="16px">
-        <mat-grid-tile *ngFor="let hike of recentHikes" [colspan]="1" [rowspan]="1">
-          <mat-card class="hike-card">
-            <mat-card-header>
-              <mat-card-title>{{ hike.title }}</mat-card-title>
-              <mat-card-subtitle>{{ hike.location }}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image [src]="hike.image" alt="{{ hike.title }}">
-            <mat-card-content>
-              <p>{{ hike.description }}</p>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
-  </div>
-  
+</div>

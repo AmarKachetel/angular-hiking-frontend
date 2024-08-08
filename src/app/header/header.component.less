@@ -1,0 +1,67 @@
+
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  background-color: var(--thirdly-color);
+  color: #FFFFFF;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-icon {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+.brand-highlight {
+  color: var(--secondary-color);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.brand-subtitle {
+  font-size: 0.9em;
+  color: var(--button-color);
+  margin-top: 4px; 
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar-button {
+  color: #F5F5F5 !important;
+  background-color: var(--secondary-color) !important;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 30px 15px;
+  border-radius: 8px;
+  margin: 0 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

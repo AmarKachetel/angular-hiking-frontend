@@ -52,3 +52,7 @@ yarn-error.log
 # System files
 .DS_Store
 Thumbs.db
+. v s  
+# Visual Studio
+.vs/
+ 

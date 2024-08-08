@@ -1,4 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+:root {
+  --primary-color: #6B8E23; /* Vert Feuillage */
+  --accent-color: #4682B4; /* Bleu Ciel */
+  --background-color: #FAF0E6; /* Sable Clair */
+  --secondary-color: #8B4513; /* Brun Terre */
+  --text-secondary: #808080; /* Gris Pierre */
+  --button-color: #87CEEB; /* Bleu Ciel Doux */
+  --thirdly-color: #D47D2A; /* Orange Automne */
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.full-width {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+}
+
+.content {
+  max-width: 1200px; /* Largeur maximale pour centrer */
+  margin: 0 auto; /* Centre le conteneur horizontalement */
+  padding: 0 20px; /* Ajoute un padding */
+}
+
+button.mat-raised-button {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+}
+
+h2, h3 {
+  color: var(--secondary-color);
+}
+
+p {
+  color: var(--text-secondary);
+}

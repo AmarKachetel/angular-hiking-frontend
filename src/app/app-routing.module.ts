@@ -2,12 +2,15 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component'; // Import the homepage component
+import { HomepageComponent } from './homepage/homepage.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [
-  { path: '', component: HomepageComponent },  // Set default path to homepage component
-  { path: 'home', component: HomepageComponent },  // Optional: explicit route to home
-  // Add more routes here as needed
+export const routes: Routes = [  // Assurez-vous que routes est exporté
+  { path: '', component: HomepageComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+
 ];
 
 @NgModule({
@@ -15,6 +18,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-// Export routes to be used in main.ts
-export { routes };

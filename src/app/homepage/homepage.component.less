@@ -1,71 +1,114 @@
-// src/app/homepage/homepage.component.less
 
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .mat-toolbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-  }
-  
-  .spacer {
-    flex: 1;
-  }
-  
-  .content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-  }
-  
+
+
+/* General Container for Content */
+.content {
+  max-width: 1200px; /* Centralizes the content */
+  margin: 0 auto; /* Centers the content horizontally */
+  padding: 20px; /* Adds space inside the content area */
+}
+
+/* Search and Create Section Styles */
+.search-and-create-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.search-section,
+.create-trail-section {
+  flex: 1;
+  padding: 20px;
+  margin: 0 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+.search-section:hover,
+.create-trail-section:hover {
+  transform: translateY(-5px); /* Slightly elevate the section on hover */
+}
+
+/* Headings for sections */
+h2,
+h3 {
+  margin-bottom: 16px;
+  color: var(--secondary-color);
+  font-weight: bold; /* Makes headings stand out more */
+  text-align: center; /* Center the text for a neat appearance */
+}
+
+/* Recent Hikes Section */
+.recent-hikes-section {
+  width: 100%;
+}
+
+/* Hike Card Styles */
+.hike-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hike-card:hover {
+  transform: translateY(-5px); /* Elevate on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+mat-grid-list {
+  width: 100%;
+}
+
+mat-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-image {
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Buttons */
+button {
+  color: var(--button-color);
+  background-color: var(--accent-color);
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+/* Extra spacing for content */
+.extra-padding {
+  padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .search-and-create-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
+    flex-direction: column; /* Stack sections vertically on smaller screens */
   }
-  
+
   .search-section,
   .create-trail-section {
-    flex: 1;
-    padding: 20px;
-    margin: 0 10px;
-    background-color: white;
-    border-radius: 8px;
+    margin: 10px 0; /* Adjust margin for stacked sections */
   }
-  
-  h2,
-  h3 {
-    margin-bottom: 16px;
-  }
-  
-  .recent-hikes-section {
-    width: 100%;
-  }
-  
-  .hike-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  mat-grid-list {
-    width: 100%;
-  }
-  
-  mat-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  mat-card-image {
-    height: 160px;
-    object-fit: cover;
-  }
-  
+}

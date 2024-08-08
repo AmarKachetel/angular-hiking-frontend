@@ -1,0 +1,42 @@
+<div class="login-container">
+    <mat-card class="login-card mat-elevation-z2">
+        <mat-card-header>
+            <mat-card-title>Connexion</mat-card-title>
+            <mat-card-subtitle>Rejoignez notre communauté d'aventuriers</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="Entrez votre email" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" placeholder="Entrez votre mot de passe" required>
+                </mat-form-field>
+
+                <button mat-raised-button type="submit" color="primary">Se connecter</button>
+            </form>
+
+            <p class="signup-prompt">
+                Vous n'avez pas encore de compte ? <a [routerLink]="['/register']">Inscrivez-vous ici</a>.
+            </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button class="social-button google" type="button">
+                <img src="assets/icons/google.png" alt="Google logo" class="social-icon">
+                Se connecter avec Google
+            </button>
+            <button mat-raised-button class="social-button apple" type="button">
+                <img src="assets/icons/apple.png" alt="Apple logo" class="social-icon">
+                Se connecter avec Apple
+            </button>
+            <button mat-raised-button class="social-button facebook" type="button">
+                <img src="assets/icons/facebook.png" alt="Facebook logo" class="social-icon">
+                Se connecter avec Facebook
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
