@@ -2,11 +2,12 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';  
 import { AppRoutingModule } from './app-routing.module'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -36,8 +37,10 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
-    RouterModule,
-    AppRoutingModule, // Assurez-vous que c'est importé ici
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([]),
+    AppRoutingModule,
     MatToolbarModule,
     MatGridListModule,
     MatCardModule,

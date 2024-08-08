@@ -3,7 +3,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,13 +15,48 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule, 
+    FormsModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.less']
 })
 export class RegisterComponent {
-  constructor() {
-    console.log('RegisterComponent initialized');
+  user = {
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
+
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+  get passwordsDoNotMatch(): boolean {
+    return this.user.password !== this.user.confirmPassword;
+  }
+
+  onSubmit() {
+    if (this.passwordsDoNotMatch) {
+      this.errorMessage = 'Les mots de passe ne correspondent pas';
+      return;
+    }
+
+    this.authService.register(this.user).subscribe(
+      response => {
+        localStorage.setItem('token', response.token);
+        this.successMessage = 'Inscription réussie !';
+        this.errorMessage = null;
+        console.log('User registered:', response);
+        this.router.navigate(['/']); // Redirigez l'utilisateur
+      },
+      error => {
+        this.errorMessage = 'Une erreur s\'est produite. Veuillez réessayer.';
+        this.successMessage = null;
+        console.error('Error:', error);
+      }
+    );
   }
 }
