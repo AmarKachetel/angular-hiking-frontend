@@ -5,13 +5,18 @@
             <span class="brand-title">Randinou <span class="brand-highlight">Adventures</span></span>
             <span class="brand-subtitle">Préparer et partager ses randos</span>
         </div>
-
     </div>
     <span class="spacer"></span>
     <button mat-button class="toolbar-button">Tracer un circuit</button>
     <button mat-button class="toolbar-button">Randonnées</button>
     <button mat-button class="toolbar-button">Aide</button>
     <button mat-button class="toolbar-button">Club Visorando</button>
-    <a mat-button class="toolbar-button" [routerLink]="['/register']">Inscription</a>
-    <a mat-button class="toolbar-button" [routerLink]="['/login']">Connexion</a>
+    <ng-container *ngIf="isLoggedIn; else guestLinks">
+        <button mat-button class="toolbar-button" [routerLink]="['/mon-compte']">{{ username }}</button>
+        <button mat-button class="toolbar-button" (click)="logout()">Déconnexion</button>
+    </ng-container>
+    <ng-template #guestLinks>
+        <a mat-button class="toolbar-button" [routerLink]="['/register']">Inscription</a>
+        <a mat-button class="toolbar-button" [routerLink]="['/login']">Connexion</a>
+    </ng-template>
 </mat-toolbar>

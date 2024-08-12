@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -11,11 +12,12 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-register',
   standalone: true,
   imports: [
+    CommonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule, 
+    RouterModule,
     FormsModule
   ],
   templateUrl: './register.component.html',
@@ -46,17 +48,13 @@ export class RegisterComponent {
 
     this.authService.register(this.user).subscribe(
       response => {
-        localStorage.setItem('token', response.token);
-        this.successMessage = 'Inscription réussie !';
-        this.errorMessage = null;
-        console.log('User registered:', response);
-        this.router.navigate(['/']); // Redirigez l'utilisateur
+        console.log('Enregistrement réussi:', response);
+        this.router.navigate(['/login']);
       },
       error => {
-        this.errorMessage = 'Une erreur s\'est produite. Veuillez réessayer.';
-        this.successMessage = null;
-        console.error('Error:', error);
+        console.error('Erreur lors de l\'enregistrement:', error);
       }
     );
+
   }
 }

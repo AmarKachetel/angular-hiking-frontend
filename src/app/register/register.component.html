@@ -29,13 +29,12 @@
                     <input matInput type="password" placeholder="Confirmez votre mot de passe" required [(ngModel)]="user.confirmPassword" name="confirmPassword">
                 </mat-form-field>
 
+                <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+
                 <button mat-raised-button color="primary" type="submit">S'inscrire</button>
             </form>
-
-
-            
-
-
 
             <p class="signin-prompt">
                 Vous avez déjà un compte ? <a [routerLink]="['/login']">Connectez-vous ici</a>.
