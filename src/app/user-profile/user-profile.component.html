@@ -1,0 +1,14 @@
+<div *ngIf="user" class="user-content">
+    <h2>Mon Profil</h2>
+    <div class="profile-details">
+        <div class="detail">
+            <strong>Nom:</strong> {{ user.name }}
+        </div>
+        <div class="detail">
+            <strong>Email:</strong> {{ user.email }}
+        </div>
+        <div class="detail">
+            <strong>Randonnées complétées:</strong> {{ user.completedHikes }}
+        </div>
+    </div>
+</div>

@@ -8,12 +8,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HikingService {
+  private apiUrl = 'http://localhost:8000/api/randos';
 
-  private apiUrl = 'http://localhost:8000/api/hikes'; // Remplacez par votre URL d'API Symfony
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) { }  // Injecter HttpClient
-
-  getHikes(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);  // Utiliser HttpClient pour faire des requêtes HTTP
+  getRandos(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 }

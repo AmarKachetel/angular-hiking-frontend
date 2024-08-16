@@ -29,19 +29,15 @@ import { HikingService } from '../hiking.service';
 })
 export class HomepageComponent implements OnInit {
 
-  recentHikes: any[] = [];
+  randos: any[] = [];
 
   constructor(private hikingService: HikingService) {
     console.log('HomepageComponent initialized');
   }
 
   ngOnInit(): void {
-    console.log('HomepageComponent ngOnInit');
-    this.hikingService.getHikes().subscribe(data => {
-      this.recentHikes = data;
-      console.log('Hikes data loaded:', this.recentHikes);
-    }, error => {
-      console.error('Error fetching hikes:', error);
+    this.hikingService.getRandos().subscribe(data => {
+      this.randos = data;
     });
   }
 }

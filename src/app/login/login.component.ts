@@ -23,7 +23,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent {
   credentials = {
-    email: '',
+    email: '',  // Utiliser 'email' ici
     password: ''
   };
 
@@ -32,8 +32,10 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
+    console.log('Attempting login with credentials:', this.credentials);
     this.authService.login(this.credentials).subscribe(
       response => {
+        console.log('Login successful, received response:', response);
         // Redirection vers la page du compte personnel après une connexion réussie
         this.router.navigate(['/mon-compte']);
       },

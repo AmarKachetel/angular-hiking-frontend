@@ -1,0 +1,16 @@
+<div *ngIf="randos.length > 0" class="randos-content">
+    <h2>Mes Randonnées</h2>
+    <div class="randos-list">
+        <div *ngFor="let rando of randos" class="rando-item">
+            <h3>{{ rando.title }}</h3>
+            <p>{{ rando.description }}</p>
+            <p><strong>Lieu:</strong> {{ rando.location }}</p>
+            <p><strong>Distance:</strong> {{ rando.distance }} km</p>
+            <p><strong>Durée:</strong> {{ rando.duration }}</p>
+            <p><strong>Difficulté:</strong> {{ rando.difficulty }}</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="randos.length === 0" class="no-randos">
+    <p>Aucune randonnée disponible.</p>
+</div>

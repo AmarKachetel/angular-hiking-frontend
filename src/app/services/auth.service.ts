@@ -24,10 +24,15 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post<any>(this.loginUrl, credentials).pipe(
       tap(response => {
-        // Stocker le token et le nom d'utilisateur dans la session
-        this.sessionService.setToken(response.token);
-        this.sessionService.setUsername(response.username);
-        this.isAuthenticated.next(true); // Mise à jour de l'état d'authentification
+        console.log('Received login response:', response);
+        if (response && response.token) {
+          // Stocker le token et le nom d'utilisateur dans la session
+          this.sessionService.setToken(response.token);
+          this.sessionService.setUsername(response.username); // Stocke le nom d'utilisateur
+          this.isAuthenticated.next(true); // Mise à jour de l'état d'authentification
+        } else {
+          throw new Error('Invalid login response');
+        }
       })
     );
   }

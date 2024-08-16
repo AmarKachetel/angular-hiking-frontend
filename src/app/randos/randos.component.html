@@ -1,0 +1,31 @@
+<!-- src/app/randos/randos.component.html -->
+<div class="randos-container">
+    <h1>Toutes les Randonnées</h1>
+
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+        <input type="text" placeholder="Rechercher une randonnée..." [(ngModel)]="searchTerm" (input)="onSearch()">
+    </div>
+
+    <!-- Section pour les randonnées par région -->
+    <div class="regions-section">
+        <h2>Randonnées par région</h2>
+        <div class="regions-list">
+            <button *ngFor="let region of regions" (click)="filterByRegion(region)">
+                {{ region }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Section pour afficher les randonnées -->
+    <div class="randos-list">
+        <div *ngFor="let rando of filteredRandos" class="rando-item">
+            <h3>{{ rando.title }}</h3>
+            <p>{{ rando.description }}</p>
+            <p><strong>Lieu:</strong> {{ rando.location }}</p>
+            <p><strong>Distance:</strong> {{ rando.distance }} km</p>
+            <p><strong>Durée:</strong> {{ rando.duration }}</p>
+            <p><strong>Difficulté:</strong> {{ rando.difficulty }}</p>
+        </div>
+    </div>
+</div>

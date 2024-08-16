@@ -55,6 +55,20 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.hike-card img {
+  width: 100%; /* Prend toute la largeur de la carte */
+  height: auto; /* Ajuste la hauteur automatiquement pour respecter le ratio */
+  max-height: 200px; /* Limite la hauteur maximale de l'image pour éviter qu'elle ne soit trop grande */
+  object-fit: cover; /* Couvre toute la largeur sans distorsion */
+  border-bottom: 1px solid #ccc; /* Optionnel : ajoute une bordure en bas de l'image */
+}
+
+.hike-card mat-card-content {
+  flex-grow: 1; /* Permet à la description de prendre le reste de l'espace */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .hike-card:hover {
   transform: translateY(-5px); /* Elevate on hover */

@@ -21,19 +21,20 @@
         <div class="recent-hikes-section">
             <h2>Derniers itinéraires</h2>
             <mat-grid-list cols="2" gutterSize="16px">
-                <mat-grid-tile *ngFor="let hike of recentHikes" [colspan]="1" [rowspan]="1">
+                <mat-grid-tile *ngFor="let rando of randos" [colspan]="1" [rowspan]="1">
                     <mat-card class="hike-card">
                         <mat-card-header>
-                            <mat-card-title>{{ hike.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ hike.location }}</mat-card-subtitle>
+                            <mat-card-title>{{ rando.title }}</mat-card-title>
+                            <mat-card-subtitle>{{ rando.location }}</mat-card-subtitle>
                         </mat-card-header>
-                        <img mat-card-image [src]="hike.image" alt="{{ hike.title }}">
+                        <img mat-card-image [src]="rando.image" alt="{{ rando.title }}">
                         <mat-card-content>
-                            <p>{{ hike.description }}</p>
+                            <p>{{ rando.description }}</p>
                         </mat-card-content>
                     </mat-card>
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
+
     </div>
 </div>

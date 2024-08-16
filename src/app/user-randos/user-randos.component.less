@@ -1,0 +1,45 @@
+.user-content {
+  padding: 20px;
+}
+
+.rando-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rando {
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rando:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rando h3 {
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+.rando p {
+  margin: 10px 0;
+  color: var(--primary-color);
+}
+
+button {
+  color: var(--button-color);
+  background-color: var(--accent-color);
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}

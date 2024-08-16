@@ -1,0 +1,36 @@
+.user-content {
+  padding: 20px;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.photo {
+  width: calc(33% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.photo p {
+  padding: 10px;
+  color: var(--primary-color);
+  text-align: center;
+  font-weight: bold;
+}
+
+.photo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

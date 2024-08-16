@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MesRandosComponent } from './mes-randos.component';
+import { UserRandosComponent } from './user-randos.component';
 
-describe('MesRandosComponent', () => {
-  let component: MesRandosComponent;
-  let fixture: ComponentFixture<MesRandosComponent>;
+describe('UserRandosComponent', () => {
+  let component: UserRandosComponent;
+  let fixture: ComponentFixture<UserRandosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MesRandosComponent]
+      imports: [UserRandosComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MesRandosComponent);
+    fixture = TestBed.createComponent(UserRandosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
