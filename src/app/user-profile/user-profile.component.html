@@ -1,14 +1,23 @@
-<div *ngIf="user" class="user-content">
+<!-- src/app/user-profile/user-profile.component.html -->
+<div class="profile-container">
     <h2>Mon Profil</h2>
-    <div class="profile-details">
-        <div class="detail">
-            <strong>Nom:</strong> {{ user.name }}
-        </div>
-        <div class="detail">
-            <strong>Email:</strong> {{ user.email }}
-        </div>
-        <div class="detail">
-            <strong>Randonnées complétées:</strong> {{ user.completedHikes }}
-        </div>
-    </div>
-</div>
+    <form (ngSubmit)="updateUserProfile()">
+      <label>
+        Nom d'utilisateur:
+        <input [(ngModel)]="user.username" name="username" />
+      </label>
+  
+      <label>
+        Email:
+        <input [(ngModel)]="user.email" name="email" />
+      </label>
+  
+      <label>
+        Nouveau mot de passe:
+        <input [(ngModel)]="user.newPassword" type="password" name="newPassword" />
+      </label>
+  
+      <button type="submit">Mettre à jour</button>
+    </form>
+  </div>
+  

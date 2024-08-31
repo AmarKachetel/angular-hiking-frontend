@@ -46,15 +46,18 @@ export class RegisterComponent {
       return;
     }
 
-    this.authService.register(this.user).subscribe(
-      response => {
+    this.authService.register(this.user).subscribe({
+      next: response => {
         console.log('Enregistrement réussi:', response);
         this.router.navigate(['/login']);
+        console.log('Redirection vers la page de connexion');
       },
-      error => {
+      error: error => {
         console.error('Erreur lors de l\'enregistrement:', error);
       }
-    );
+    });
+    
+    
 
   }
 }

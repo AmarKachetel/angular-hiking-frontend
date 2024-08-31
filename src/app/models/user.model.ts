@@ -1,7 +1,6 @@
-// src/app/models/user.model.ts
 export interface UserProfile {
   id: number;
-  name: string;
+  username: string;
   email: string;
-  completedHikes: number; // ou tout autre attribut que vous souhaitez inclure
+  password?: string; // Ajoutez le champ password uniquement si vous voulez permettre la mise à jour du mot de passe
 }

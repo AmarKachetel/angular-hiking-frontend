@@ -1,25 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../services/user.service';
-import { UserProfile } from '../models/user.model'; // Assurez-vous que le chemin est correct
+import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.less']
 })
+
 export class UserProfileComponent implements OnInit {
+  user: any = {};
 
-  user: UserProfile | null = null;
-
-  constructor(private userService: UserService) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.userService.getUserProfile().subscribe({
+    this.loadUserProfile();
+  }
+
+  loadUserProfile(): void {
+    this.http.get('http://localhost:8000/api/profile').subscribe({
       next: (data) => this.user = data,
-      error: (err) => console.error('Error fetching user profile:', err)
+      error: (err) => console.error('Failed to load profile', err)
+    });
+  }
+
+  updateUserProfile(): void {
+    this.http.post('http://localhost:8000/api/profile', this.user).subscribe({
+      next: () => alert('Profile updated successfully'),
+      error: (err) => console.error('Failed to update profile', err)
     });
   }
 }

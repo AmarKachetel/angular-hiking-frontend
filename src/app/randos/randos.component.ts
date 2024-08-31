@@ -1,5 +1,3 @@
-// src/app/randos/randos.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RandoService } from '../services/rando.service';
@@ -22,7 +20,7 @@ export class RandosComponent implements OnInit {
   constructor(private randoService: RandoService) {}
 
   ngOnInit(): void {
-    this.randoService.getUserRandos().subscribe({
+    this.randoService.getAllRandos().subscribe({
       next: (data) => {
         this.randos = data;
         this.filteredRandos = data;
