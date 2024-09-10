@@ -8,7 +8,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { HikingService } from '../hiking.service';
+import { HikingService } from '../services/hiking.service';
 
 @Component({
   selector: 'app-homepage',

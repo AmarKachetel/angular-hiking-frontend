@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserRandoService } from '../services/user_rando.service';
+import { UserRandoService } from '../services/user-rando.service';
 import { Rando } from '../models/rando.model';
+import { HikingService } from '../services/hiking.service';
 
 @Component({
   selector: 'app-user-randos',

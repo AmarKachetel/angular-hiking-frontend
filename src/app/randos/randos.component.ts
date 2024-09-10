@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RandoService } from '../services/rando.service';
 import { Rando } from '../models/rando.model';
 import { FormsModule } from '@angular/forms';
+import { HikingService } from '../services/hiking.service';
 
 @Component({
   selector: 'app-randos',
