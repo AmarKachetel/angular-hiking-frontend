@@ -17,7 +17,7 @@
             <button mat-button class="toolbar-button" (click)="toggleMenu()">{{ username }}</button>
             <div *ngIf="menuOpen" class="dropdown-menu">
                 <ul>
-                    <li (click)="navigateTo('randos')">Mes Randonnées</li>
+                    <li (click)="navigateTo('user-randos')">Mes Randonnées</li>
                     <li (click)="navigateTo('photos')">Mes Photos</li>
                     <li (click)="navigateTo('posts')">Mes Posts</li>
                     <li (click)="navigateTo('profile')">Mon Profil</li>

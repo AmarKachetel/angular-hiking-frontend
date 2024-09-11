@@ -18,6 +18,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'randos', component: RandosComponent }, 
   { path: 'mon-compte', component: MonCompteComponent, canActivate: [AuthGuard] },
+  { path: 'user-randos', component: UserRandosComponent, canActivate: [AuthGuard] },  // Pour afficher les randonnées de l'utilisateur
   { path: 'photos', component: UserPhotosComponent, canActivate: [AuthGuard] },
   { path: 'posts', component: UserPostsComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
