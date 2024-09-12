@@ -1,30 +1,34 @@
 <div class="manage-randos">
-    <h2>Gestion des Randonnées</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Titre</th>
-          <th>Description</th>
-          <th>Localisation</th>
-          <th>Distance</th>
-          <th>Durée</th>
-          <th>Difficulté</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let rando of randos">
-          <td>{{ rando.title }}</td>
-          <td>{{ rando.description }}</td>
-          <td>{{ rando.location }}</td>
-          <td>{{ rando.distance }} km</td>
-          <td>{{ rando.duration }}</td>
-          <td>{{ rando.difficulty }}</td>
-          <td>
-            <button (click)="deleteRando(rando.id)">Supprimer</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+   <!-- manage-randos.component.html -->
+<h2>Gestion des Randonnées</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Localisation</th>
+      <th>Distance</th>
+      <th>Durée</th>
+      <th>Difficulté</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rando of randos">
+      <td>{{ rando.title }}</td>
+      <td>{{ rando.description }}</td>
+      <td>{{ rando.location }}</td>
+      <td>{{ rando.distance }} km</td>
+      <td>{{ rando.duration }}</td>
+      <td>{{ rando.difficulty }}</td>
+      <td>
+        <button (click)="deleteRando(rando.id)">Supprimer</button>
+        <button (click)="editRando(rando)">Modifier</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
   </div>
   

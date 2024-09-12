@@ -33,7 +33,7 @@
             <button mat-button class="toolbar-button" (click)="toggleAdminMenu()">Admin Menu</button>
             <div *ngIf="adminMenuOpen" class="dropdown-menu">
                 <ul>
-                    <li (click)="navigateTo('admin/validate-user')">Validate User</li>
+                    <li [routerLink]="['/admin/validate-user']">Validate User</li>
                     <li (click)="navigateTo('admin/manage-randos')">Manage Randos</li>
                     <li (click)="navigateTo('admin/moderate-reviews')">Moderate Reviews</li>
                 </ul>

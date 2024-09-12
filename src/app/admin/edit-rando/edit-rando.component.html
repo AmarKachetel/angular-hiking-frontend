@@ -1,0 +1,55 @@
+<h2>Modifier Randonnée</h2>
+
+<form (ngSubmit)="saveChanges()">
+  <!-- Titre de la randonnée -->
+  <div>
+    <label for="title">Titre :</label>
+    <input type="text" id="title" [(ngModel)]="rando.title" name="title" required>
+  </div>
+
+  <!-- Description de la randonnée -->
+  <div>
+    <label for="description">Description :</label>
+    <textarea id="description" [(ngModel)]="rando.description" name="description" required></textarea>
+  </div>
+
+  <!-- Localisation de la randonnée -->
+  <div>
+    <label for="location">Localisation :</label>
+    <input type="text" id="location" [(ngModel)]="rando.location" name="location" required>
+  </div>
+
+  <!-- Distance de la randonnée -->
+  <div>
+    <label for="distance">Distance (km) :</label>
+    <input type="number" id="distance" [(ngModel)]="rando.distance" name="distance" min="0" required>
+  </div>
+
+  <!-- Durée de la randonnée -->
+  <div>
+    <label for="duration">Durée :</label>
+    <input type="text" id="duration" [(ngModel)]="rando.duration" name="duration" required>
+  </div>
+
+  <!-- Difficulté de la randonnée -->
+  <div>
+    <label for="difficulty">Difficulté :</label>
+    <select id="difficulty" [(ngModel)]="rando.difficulty" name="difficulty" required>
+      <option value="Facile">Facile</option>
+      <option value="Moyen">Moyen</option>
+      <option value="Difficile">Difficile</option>
+    </select>
+  </div>
+
+  <!-- Image de la randonnée -->
+  <div>
+    <label for="image">Image URL :</label>
+    <input type="text" id="image" [(ngModel)]="rando.image" name="image">
+  </div>
+
+  <!-- Boutons pour sauvegarder ou annuler -->
+  <div>
+    <button type="submit">Sauvegarder les modifications</button>
+    <button type="button" (click)="cancel()">Annuler</button>
+  </div>
+</form>

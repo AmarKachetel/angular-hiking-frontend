@@ -4,13 +4,17 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 export const adminGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService); // Injecte le service d'authentification
-  const router = inject(Router); // Injecte le routeur
+  const authService = inject(AuthService); 
+  const router = inject(Router); 
 
+  console.log('Checking admin access...'); // Log de vérification
+  
   if (authService.isAdmin()) {
-    return true;
+    console.log('Access granted');
+    return true; 
   } else {
-    router.navigate(['/']); // Redirige si l'utilisateur n'est pas admin
-    return false;
+    console.log('Access denied');
+    router.navigate(['/']);
+    return false; 
   }
 };

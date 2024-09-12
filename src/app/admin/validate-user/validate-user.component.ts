@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../admin.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-validate-user',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './validate-user.component.html',
   styleUrls: ['./validate-user.component.less']
 })

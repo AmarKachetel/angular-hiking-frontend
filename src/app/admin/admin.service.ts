@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SessionService } from '../services/session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,23 @@ import { Observable } from 'rxjs';
 export class AdminService {
   private apiUrl = 'http://localhost:8000/api/admin';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sessionService: SessionService) { }
+
+   // Méthode pour récupérer toutes les randonnées
+   getAllRandos(): Observable<any[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`
+    });
+    return this.http.get<any[]>(`${this.apiUrl}/randos`, { headers });
+  }
+
+   // Méthode pour récupérer une randonnée par ID
+   getRandoById(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/randos/${id}`, { headers });
+  }
 
   validateUser(userId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/validate-user/${userId}`, {});

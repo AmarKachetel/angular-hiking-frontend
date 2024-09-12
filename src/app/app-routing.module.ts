@@ -25,7 +25,7 @@ export const routes: Routes = [ // Assurez-vous que `routes` est bien exporté i
   { path: 'contact', component: ContactComponent },
 
   // Chargement paresseux du module administrateur
-  { path: 'admin', loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 
   { path: '**', redirectTo: '/' },
 ];

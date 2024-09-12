@@ -43,8 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateTo(page: string) {
-    this.router.navigate([`/${page}`]);
-  }
+    this.router.navigate([page]);  }
 
   logout() {
     this.sessionService.clear();
