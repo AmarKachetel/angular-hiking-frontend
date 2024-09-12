@@ -46,5 +46,15 @@ export class AuthService {
     return this.isAuthenticated.asObservable();
   }
 
-  
+  isAdmin(): boolean {
+    const token = this.sessionService.getToken();
+    
+    // Exemple simple de vérification si l'utilisateur est admin en fonction du token
+    if (token) {
+      const tokenPayload = JSON.parse(atob(token.split('.')[1])); // Décode la partie payload du JWT
+      return tokenPayload.roles && tokenPayload.roles.includes('ROLE_ADMIN');
+    }
+
+    return false;
+  }
 }

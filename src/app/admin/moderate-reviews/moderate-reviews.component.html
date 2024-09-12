@@ -1,0 +1,11 @@
+<div class="moderate-reviews">
+    <h2>Modération des Avis</h2>
+    <ul>
+      <li *ngFor="let review of reviews">
+        <p>{{ review.content }}</p>
+        <button (click)="approveReview(review.id)">Approuver</button>
+        <button (click)="deleteReview(review.id)">Supprimer</button>
+      </li>
+    </ul>
+  </div>
+  

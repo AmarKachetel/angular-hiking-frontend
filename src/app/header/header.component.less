@@ -107,3 +107,49 @@
   flex: 1;
 }
 
+.user-menu,
+.admin-menu { /* Applique les mêmes styles aux deux menus */
+  position: relative;
+  display: inline-block;
+}
+
+/* Style commun pour tous les menus déroulants */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: var(--thirdly-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+/* Affichage du menu utilisateur lorsqu'il est ouvert */
+.user-menu.open .dropdown-menu {
+  display: block;
+}
+
+/* Affichage du menu admin lorsqu'il est ouvert */
+.admin-menu .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.dropdown-menu li:hover {
+  background-color: var(--secondary-color);
+  color: #FFFFFF;
+}

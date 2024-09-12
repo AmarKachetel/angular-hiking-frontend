@@ -1,0 +1,5 @@
+<div class="validate-user">
+    <h2>Validation des Utilisateurs</h2>
+    <input #userIdInput type="number" placeholder="ID de l'utilisateur">
+    <button (click)="validateUser(+userIdInput.value)">Valider l'utilisateur</button> <!-- Ajoutez "+" pour convertir en number -->
+</div>

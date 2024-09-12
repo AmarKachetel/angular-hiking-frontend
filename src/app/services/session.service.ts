@@ -1,5 +1,3 @@
-// src/app/services/session.service.ts
-
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,24 +9,40 @@ export class SessionService {
 
   constructor() { }
 
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined';
+  }
+
   setToken(token: string): void {
-    sessionStorage.setItem(this.tokenKey, token);
+    if (this.isBrowser()) {
+      sessionStorage.setItem(this.tokenKey, token);
+    }
   }
 
   getToken(): string | null {
-    return sessionStorage.getItem(this.tokenKey);
+    if (this.isBrowser()) {
+      return sessionStorage.getItem(this.tokenKey);
+    }
+    return null;
   }
 
   setUsername(username: string): void {
-    sessionStorage.setItem(this.usernameKey, username);
+    if (this.isBrowser()) {
+      sessionStorage.setItem(this.usernameKey, username);
+    }
   }
 
   getUsername(): string | null {
-    return sessionStorage.getItem(this.usernameKey);
+    if (this.isBrowser()) {
+      return sessionStorage.getItem(this.usernameKey);
+    }
+    return null;
   }
 
   clear(): void {
-    sessionStorage.removeItem(this.tokenKey);
-    sessionStorage.removeItem(this.usernameKey);
+    if (this.isBrowser()) {
+      sessionStorage.removeItem(this.tokenKey);
+      sessionStorage.removeItem(this.usernameKey);
+    }
   }
 }
