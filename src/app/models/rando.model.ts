@@ -9,4 +9,7 @@ export interface Rando {
   difficulty: string;
   image: string;
   coordinates?: number[]; // facultatif si les coordonnées ne sont pas toujours présentes
+  avis?: any[]; // facultatif
+  reservations?: any[]; // facultatif
+  user?: any; // facultatif
 }

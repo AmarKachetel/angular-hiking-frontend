@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RandoService } from '../services/rando.service';
 import { Rando } from '../models/rando.model';
 import { FormsModule } from '@angular/forms';
-import { HikingService } from '../services/hiking.service';
 
 @Component({
   selector: 'app-randos',
@@ -16,7 +15,6 @@ export class RandosComponent implements OnInit {
   randos: Rando[] = [];
   filteredRandos: Rando[] = [];
   searchTerm: string = '';
-  regions: string[] = ['Île-de-France', 'Bretagne', 'Provence', 'Normandie', 'Alsace']; // Ajouter d'autres régions si nécessaire
 
   constructor(private randoService: RandoService) {}
 
@@ -25,6 +23,7 @@ export class RandosComponent implements OnInit {
       next: (data) => {
         this.randos = data;
         this.filteredRandos = data;
+        console.log('Randonnées récupérées:', this.randos);
       },
       error: (err) => console.error('Erreur lors de la récupération des randonnées:', err)
     });
@@ -35,9 +34,5 @@ export class RandosComponent implements OnInit {
       rando.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       rando.location.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-  }
-
-  filterByRegion(region: string): void {
-    this.filteredRandos = this.randos.filter(rando => rando.location === region);
   }
 }

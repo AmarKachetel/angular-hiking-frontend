@@ -1,40 +1,50 @@
-<!-- src/app/homepage/homepage.component.html -->
 <div class="container">
     <div class="content">
-        <div class="search-and-create-section">
-            <div class="search-section mat-elevation-z2">
-                <h2>Trouver une randonnée</h2>
-                <mat-form-field appearance="fill">
-                    <mat-label>Lieu ou n° de randonnée</mat-label>
-                    <input matInput placeholder="Entrez une localisation ou un numéro">
-                </mat-form-field>
-                <button mat-raised-button color="accent">Chercher</button>
-            </div>
-
-            <div class="create-trail-section mat-elevation-z2">
-                <h3>Créez gratuitement vos propres circuits</h3>
-                <p>Choisissez votre fond de carte, tracez votre randonnée, et emportez-la avec vous !</p>
-                <button mat-raised-button color="primary">Tracer son circuit</button>
+        <!-- Section de présentation -->
+        <div class="intro-section mat-elevation-z2">
+            <div class="intro-content">
+              <h2>Bienvenue sur Randinou Adventures!</h2>
+              <p>Découvrez les plus belles randonnées, réservez vos itinéraires préférés, et partagez vos aventures avec une communauté de passionnés.</p>
+              <button mat-raised-button color="primary" (click)="navigateToRegister()">Rejoignez-nous</button>
             </div>
         </div>
-
-        <div class="recent-hikes-section">
-            <h2>Derniers itinéraires</h2>
-            <mat-grid-list cols="2" gutterSize="16px">
-                <mat-grid-tile *ngFor="let rando of randos" [colspan]="1" [rowspan]="1">
-                    <mat-card class="hike-card">
-                        <mat-card-header>
-                            <mat-card-title>{{ rando.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ rando.location }}</mat-card-subtitle>
-                        </mat-card-header>
-                        <img mat-card-image [src]="rando.image" alt="{{ rando.title }}">
-                        <mat-card-content>
-                            <p>{{ rando.description }}</p>
-                        </mat-card-content>
-                    </mat-card>
-                </mat-grid-tile>
-            </mat-grid-list>
+  
+      <!-- Section des derniers itinéraires -->
+      <div class="recent-hikes-section">
+        <h2>Derniers itinéraires</h2>
+        <div class="randos-list">
+          <div *ngFor="let rando of randos" class="rando-item mat-elevation-z2">
+            <div class="rando-header">
+              <img class="rando-image" [src]="'http://localhost:8000' + rando.image" alt="{{ rando.title }}">
+              <div class="rando-details">
+                <h3>{{ rando.title }}</h3>
+                <p><strong>Lieu:</strong> {{ rando.location }}</p>
+                <p><strong>Distance:</strong> {{ rando.distance }} km</p>
+                <p><strong>Durée:</strong> {{ rando.duration }}</p>
+                <p><strong>Difficulté:</strong> {{ rando.difficulty }}</p>
+              </div>
+            </div>
+            <p class="rando-description">{{ rando.description }}</p>
+          </div>
         </div>
+      </div>
+  
+      <!-- Section de réservation -->
+      <div class="reservation-section mat-elevation-z2">
+        <h2>Réservez votre prochaine aventure</h2>
+        <p>Choisissez une randonnée et réservez votre place dès maintenant pour vivre une expérience inoubliable en pleine nature.</p>
+        <button mat-raised-button color="primary" (click)="handleReservation()">Réserver une randonnée</button>
+      </div>
+      
+      <!-- Section Témoignages d'utilisateurs -->
+      <div class="testimonials-section mat-elevation-z2">
+        <h2>Ce que disent nos utilisateurs</h2>
+        <div class="testimonial" *ngFor="let testimonial of testimonials">
+          <p>"{{ testimonial.content }}"</p>
+          <p><strong>- {{ testimonial.user }}</strong></p>
+        </div>
+      </div>
 
     </div>
-</div>
+  </div>
+  

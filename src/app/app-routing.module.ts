@@ -11,6 +11,7 @@ import { UserPhotosComponent } from './user-photos/user-photos.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 export const routes: Routes = [ // Assurez-vous que `routes` est bien exporté ici
   { path: '', component: HomepageComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [ // Assurez-vous que `routes` est bien exporté i
   { path: 'posts', component: UserPostsComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent },
+  { path: 'reservation', component: ReservationComponent },
 
   // Chargement paresseux du module administrateur
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },

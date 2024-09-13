@@ -3,9 +3,8 @@
 .mat-toolbar {
   display: flex;
   justify-content: space-between;
-  padding: 60px;
-  background-color: var(--thirdly-color);
-  color: #FFFFFF;
+  padding: 50px 20px;   background-color: var(--thirdly-color);
+  color: #e69b9b;
   width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -16,7 +15,7 @@
 }
 
 .brand-icon {
-  width: 120px;
+  width: 100px;
   height: auto;
   margin-right: 10px;
 }
@@ -49,9 +48,9 @@
 .toolbar-button {
   color: #F5F5F5 !important;
   background-color: var(--secondary-color) !important;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 600;
-  padding: 30px 15px;
+  padding: 25px 15px;
   border-radius: 8px;
   margin: 0 5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -64,7 +63,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.user-menu {
+.user-menu,
+.admin-menu {
   position: relative;
   display: inline-block;
 }
@@ -72,16 +72,18 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 50px;
+  top: 70px;
   right: 0;
-  background-color: var(--thirdly-color);
+  background-color: #6B8E23;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   padding: 10px 0;
+  min-width: 100%;
 }
 
-.user-menu.open .dropdown-menu {
+.user-menu.open .dropdown-menu,
+.admin-menu.open .dropdown-menu {
   display: block;
 }
 
@@ -96,6 +98,7 @@
   cursor: pointer;
   color: #FFFFFF;
   font-weight: 600;
+  font-size: 0.9em;
 }
 
 .dropdown-menu li:hover {
@@ -119,7 +122,7 @@
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: var(--thirdly-color);
+  background-color:#6B8E23;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -152,4 +155,47 @@
 .dropdown-menu li:hover {
   background-color: var(--secondary-color);
   color: #FFFFFF;
+}
+
+.arrow-up {
+  display: inline-block;
+  margin-left: 5px;
+  transform: rotate(180deg);
+  transition: transform 0.2s;
+}
+
+.arrow-down {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.2s;
+}
+
+
+.burger-menu {
+  display: none; /* Caché par défaut */
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: var(--thirdly-color);
+  position: absolute;
+  top: 60px; /* Ajustez cette valeur pour que le menu apparaisse juste en dessous de l'icône burger */
+  right: 0;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .toolbar-buttons {
+    display: none; /* Masquer les boutons de la barre d'outils sur les petits écrans */
+  }
+
+  .burger-menu {
+    display: block; /* Afficher le menu burger sur les petits écrans */
+  }
+
+  .mobile-menu {
+    display: flex; /* Afficher le menu mobile sur les petits écrans */
+  }
 }

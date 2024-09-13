@@ -1,14 +1,9 @@
-<div class="randos-container">
-    <h1>Toutes les Randonnées</h1>
-  
-    <!-- Barre de recherche -->
-    <div class="search-bar">
-      <input type="text" placeholder="Rechercher une randonnée..." [(ngModel)]="searchTerm" (input)="onSearch()">
-    </div>
-  
-    <!-- Section pour afficher les randonnées -->
+<div class="reservation-container">
+    <h1>Réserver une randonnée</h1>
+    <p>Choisissez parmi les randonnées disponibles et réservez votre place.</p>
+    
     <div class="randos-list">
-      <div *ngFor="let rando of filteredRandos" class="rando-item mat-elevation-z2">
+      <div *ngFor="let rando of randos" class="rando-item mat-elevation-z2">
         <div class="rando-header">
           <img class="rando-image" [src]="'http://localhost:8000' + rando.image" alt="{{ rando.title }}">
           <div class="rando-details">
@@ -19,7 +14,7 @@
             <p><strong>Difficulté:</strong> {{ rando.difficulty }}</p>
           </div>
         </div>
-        <p class="rando-description">{{ rando.description }}</p>
+        <button mat-raised-button color="primary" (click)="reserveRando(rando)" class="btn-reserver">Réserver</button>
       </div>
     </div>
   </div>
