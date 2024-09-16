@@ -1,0 +1,15 @@
+<div *ngIf="reservations.length > 0" class="reservations-content">
+    <h2>Mes Réservations</h2>
+    <div class="reservations-list">
+      <div *ngFor="let reservation of reservations" class="reservation-item">
+        <h3>{{ reservation.rando.title }}</h3>
+        <p>{{ reservation.rando.description }}</p>
+        <p><strong>Date de réservation:</strong> {{ reservation.reservationDate | date }}</p>
+        <p><strong>Statut:</strong> {{ reservation.status }}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="reservations.length === 0" class="no-reservations">
+    <p>Aucune réservation disponible.</p>
+  </div>
+  

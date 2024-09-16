@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { RandoService } from '../services/rando.service';
+import { ReservationService } from '../services/reservation.service'; // Assurez-vous d'importer le service de réservation
 import { Rando } from '../models/rando.model';
 
 @Component({
@@ -14,7 +15,10 @@ import { Rando } from '../models/rando.model';
 export class ReservationComponent implements OnInit {
   randos: Rando[] = [];
 
-  constructor(private randoService: RandoService) {}
+  constructor(
+    private randoService: RandoService,
+    private reservationService: ReservationService // Injecte le service de réservation ici
+  ) {}
 
   ngOnInit(): void {
     this.randoService.getAllRandos().subscribe({
@@ -27,7 +31,12 @@ export class ReservationComponent implements OnInit {
   }
 
   reserveRando(rando: Rando) {
-    // Logique pour réserver une randonnée
-    console.log('Réservation pour la randonnée:', rando);
+    this.reservationService.makeReservation(rando.id).subscribe({
+      next: (response) => {
+        console.log('Réservation réussie:', response);
+        alert('Votre réservation a été effectuée avec succès !');
+      },
+      error: (err) => console.error('Erreur lors de la réservation:', err)
+    });
   }
 }

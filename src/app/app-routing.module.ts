@@ -12,6 +12,7 @@ import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 
 export const routes: Routes = [ // Assurez-vous que `routes` est bien exporté ici
   { path: '', component: HomepageComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [ // Assurez-vous que `routes` est bien exporté i
   { path: 'randos', component: RandosComponent },
   { path: 'mon-compte', component: MonCompteComponent, canActivate: [AuthGuard] },
   { path: 'user-randos', component: UserRandosComponent, canActivate: [AuthGuard] },
+  { path: 'user-reservations', component: UserReservationsComponent, canActivate: [AuthGuard] },
   { path: 'photos', component: UserPhotosComponent, canActivate: [AuthGuard] },
   { path: 'posts', component: UserPostsComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },

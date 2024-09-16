@@ -21,6 +21,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor} from './interceptors/auth-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,11 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
