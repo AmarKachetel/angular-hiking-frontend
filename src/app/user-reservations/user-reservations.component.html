@@ -1,15 +1,21 @@
 <div *ngIf="reservations.length > 0" class="reservations-content">
-    <h2>Mes Réservations</h2>
-    <div class="reservations-list">
-      <div *ngFor="let reservation of reservations" class="reservation-item">
-        <h3>{{ reservation.rando.title }}</h3>
-        <p>{{ reservation.rando.description }}</p>
-        <p><strong>Date de réservation:</strong> {{ reservation.reservationDate | date }}</p>
-        <p><strong>Statut:</strong> {{ reservation.status }}</p>
+  <h2>Mes Réservations</h2>
+  <div class="reservations-list">
+    <div *ngFor="let reservation of reservations" class="reservation-item">
+      <div class="reservation-header">
+        <img [src]="'http://localhost:8000' + reservation.rando.image" alt="Image de {{ reservation.rando.title }}" class="reservation-image">
+        
+        <div class="reservation-details">
+          <h3>{{ reservation.rando.title }}</h3>
+          <p>{{ reservation.rando.description }}</p>
+          <p><strong>Date de réservation:</strong> {{ reservation.reservationDate | date }}</p>
+          <p><strong>Statut:</strong> {{ reservation.status }}</p>
+        </div>
       </div>
+      <button (click)="cancelReservation(reservation.id)" class="btn-cancel mat-raised-button">Annuler la réservation</button>
     </div>
   </div>
-  <div *ngIf="reservations.length === 0" class="no-reservations">
-    <p>Aucune réservation disponible.</p>
-  </div>
-  
+</div>
+<div *ngIf="reservations.length === 0" class="no-reservations">
+  <p>Aucune réservation disponible.</p>
+</div>

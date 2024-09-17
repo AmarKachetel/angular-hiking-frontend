@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SessionService } from './session.service';
 import { Reservation } from './../models/reservation.model'; // Import the new Reservation model
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,19 @@ export class ReservationService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.sessionService.getToken()}`
     });
+  
+    return this.http.get<Reservation[]>(`${this.apiUrl}/my`, { headers }).pipe(
+      tap((data) => {
+        console.log('Réservations reçues du backend:', data); // Ajoutez cette ligne pour afficher les données reçues
+      })
+    );
+  }
 
-    return this.http.get<Reservation[]>(`${this.apiUrl}/my`, { headers });
+  cancelReservation(reservationId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`
+    });
+
+    return this.http.delete(`${this.apiUrl}/${reservationId}`, { headers });
   }
 }
