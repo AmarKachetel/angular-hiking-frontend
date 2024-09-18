@@ -1,24 +1,91 @@
+@primary-color: #4CAF50;  // Green
+@secondary-color: #FF5722;  // Orange
+@input-border-color: #CCCCCC;  // Light Grey
+@input-focus-border-color: #FF5722;  // Orange Focus
+@background-color: #f9f9f9;  // Off-white background
+@input-padding: 10px;
+@border-radius: 5px;
+
 .validate-user {
+    background-color: @background-color;
+    padding: 20px;
+    border-radius: @border-radius;
+    max-width: 600px;
+    margin: 0 auto 20px;  // Centers the form in the viewport with margin below
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
     h2 {
-      margin-bottom: 20px;
+        text-align: center;
+        color: @primary-color;
+        margin-bottom: 20px;
     }
-  
+
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 5px 10px;
+            color: white;
+            background-color: @primary-color;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+
+            &:hover {
+                background-color: darken(@primary-color, 10%);
+            }
+        }
+    }
+
     input {
-      margin-right: 10px;
-      padding: 5px;
-      border: 1px solid #ddd;
+        width: calc(100% - 22px);  // Adjust input width accounting for padding and border
+        padding: @input-padding;
+        margin-bottom: 10px;
+        border: 1px solid @input-border-color;
+        border-radius: @border-radius;
+
+        &:focus {
+            border-color: @input-focus-border-color;
+            outline: none;
+        }
     }
-  
-    button {
-      padding: 5px 10px;
-      color: #fff;
-      background-color: #5bc0de;
-      border: none;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #31b0d5;
-      }
+
+    .button-group {
+        display: flex;
+        justify-content: center;  // Center the buttons within the form
+        gap: 10px;
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: @border-radius;
+            width: auto;  // Automatically adjust the width of the button
+            background-color: @secondary-color;
+            color: white;
+
+            &:hover {
+                background-color: darken(@secondary-color, 10%);
+            }
+
+            &:first-child {
+                background-color: @primary-color;
+
+                &:hover {
+                    background-color: darken(@primary-color, 10%);
+                }
+            }
+        }
     }
-  }
-  
+}

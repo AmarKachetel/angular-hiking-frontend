@@ -1,5 +1,24 @@
 <div class="validate-user">
     <h2>Validation des Utilisateurs</h2>
-    <input #userIdInput type="number" placeholder="ID de l'utilisateur">
-    <button (click)="validateUser(+userIdInput.value)">Valider l'utilisateur</button> <!-- Ajoutez "+" pour convertir en number -->
-</div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of unvalidatedUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button (click)="validateUser(user.id)">Valider</button>
+            <button (click)="rejectUser(user.id)">Rejeter</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

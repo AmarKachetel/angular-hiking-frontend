@@ -1,3 +1,4 @@
+<div class="edit-rando">
 <h2>Modifier Randonnée</h2>
 
 <form (ngSubmit)="saveChanges()">
@@ -48,8 +49,9 @@
   </div>
 
   <!-- Boutons pour sauvegarder ou annuler -->
-  <div>
+  <div class="button-group">
     <button type="submit">Sauvegarder les modifications</button>
     <button type="button" (click)="cancel()">Annuler</button>
   </div>
 </form>
+</div>

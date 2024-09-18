@@ -27,8 +27,28 @@ export class AdminService {
     return this.http.get<any>(`${this.apiUrl}/randos/${id}`, { headers });
   }
 
+  getUnvalidatedUsers(): Observable<any[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<any[]>(`${this.apiUrl}/users/unvalidated`, { headers });
+  }
+  // Validate a user
   validateUser(userId: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/validate-user/${userId}`, {});
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  // Ensure token is attached
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.apiUrl}/validate-user/${userId}`, {}, { headers });
+  }
+
+  rejectUser(userId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  // Ensure token is attached
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.apiUrl}/reject-user/${userId}`, {}, { headers });
   }
 
   manageRandos(): Observable<any> {
