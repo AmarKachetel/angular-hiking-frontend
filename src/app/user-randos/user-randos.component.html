@@ -1,16 +1,30 @@
-<div *ngIf="randos.length > 0" class="randos-content">
-    <h2>Mes Randonnées</h2>
+<div class="randos-container">
+    <h1>Mes Randonnées</h1>
+  
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher une randonnée..." [(ngModel)]="searchTerm" (input)="onSearch()">
+    </div>
+  
+    <!-- Section pour afficher les randonnées -->
     <div class="randos-list">
-        <div *ngFor="let rando of randos" class="rando-item">
+      <div *ngFor="let rando of filteredRandos" class="rando-item mat-elevation-z2">
+        <div class="rando-header">
+          <img class="rando-image" [src]="'http://localhost:8000' + rando.image" alt="{{ rando.title }}">
+          <div class="rando-details">
             <h3>{{ rando.title }}</h3>
-            <p>{{ rando.description }}</p>
             <p><strong>Lieu:</strong> {{ rando.location }}</p>
             <p><strong>Distance:</strong> {{ rando.distance }} km</p>
             <p><strong>Durée:</strong> {{ rando.duration }}</p>
             <p><strong>Difficulté:</strong> {{ rando.difficulty }}</p>
+          </div>
         </div>
+        <p class="rando-description">{{ rando.description }}</p>
+      </div>
     </div>
-</div>
-<div *ngIf="randos.length === 0" class="no-randos">
-    <p>Aucune randonnée disponible.</p>
-</div>
+  
+    <div *ngIf="filteredRandos.length === 0" class="no-randos">
+      <p>Aucune randonnée disponible.</p>
+    </div>
+  </div>
+  

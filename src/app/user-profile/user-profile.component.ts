@@ -12,6 +12,8 @@ import { UserService } from '../services/user.service';
 })
 export class UserProfileComponent implements OnInit {
   user: any = {};
+  successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(private userService: UserService) {}
 
@@ -22,14 +24,24 @@ export class UserProfileComponent implements OnInit {
   loadUserProfile(): void {
     this.userService.getUserProfile().subscribe({
       next: (data) => this.user = data,
-      error: (err) => console.error('Failed to load profile', err)
+      error: (err) => {
+        this.errorMessage = 'Erreur lors du chargement du profil';
+        console.error('Failed to load profile', err);
+      }
     });
   }
 
   updateUserProfile(): void {
     this.userService.updateUserProfile(this.user).subscribe({
-      next: () => alert('Profile updated successfully'),
-      error: (err) => console.error('Failed to update profile', err)
+      next: () => {
+        this.successMessage = 'Profil mis à jour avec succès';
+        this.errorMessage = '';
+      },
+      error: (err) => {
+        this.errorMessage = 'Erreur lors de la mise à jour du profil';
+        this.successMessage = '';
+        console.error('Failed to update profile', err);
+      }
     });
   }
 }

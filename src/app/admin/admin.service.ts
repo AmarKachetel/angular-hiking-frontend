@@ -36,13 +36,20 @@ export class AdminService {
   }
 
   updateRando(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/randos/${id}`, data);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  
+      'Content-Type': 'application/json'
+    });
+    return this.http.put(`${this.apiUrl}/randos/${id}`, data, { headers });
   }
 
   deleteRando(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/randos/${id}`);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete(`${this.apiUrl}/randos/${id}`, { headers });
   }
-
   approveReview(reviewId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/reviews/${reviewId}/approve`, {});
   }

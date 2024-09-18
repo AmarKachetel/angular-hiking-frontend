@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class LoginComponent {
 
   errorMessage: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) { }
 
   onSubmit() {
     console.log('Attempting login with credentials:', this.credentials);
@@ -37,13 +38,22 @@ export class LoginComponent {
       response => {
         console.log('Login successful, received response:', response);
         // Redirection vers la page du compte personnel après une connexion réussie
+        this.snackBar.open('Connexion réussie !', 'Fermer', { duration: 3000, panelClass: 'snackbar-success' });
         this.router.navigate(['/mon-compte']);
       },
       error => {
-        // Gérer l'erreur de connexion
-        this.errorMessage = 'Échec de la connexion. Veuillez vérifier vos informations.';
+        if (error.status === 401) {
+          this.errorMessage = 'Email ou mot de passe incorrect.';
+        } else if (error.status === 400) {
+          this.errorMessage = 'Veuillez remplir tous les champs correctement.';
+        } else {
+          this.errorMessage = 'Une erreur est survenue, veuillez réessayer plus tard.';
+        }
+        this.snackBar.open(this.errorMessage, 'Fermer', { duration: 3000, panelClass: 'snackbar-error' });
         console.error('Login error:', error);
       }
     );
   }
 }
+
+
