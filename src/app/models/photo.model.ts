@@ -1,5 +1,5 @@
-// src/app/models/photo.model.ts
 export interface Photo {
+  id: number;  
   url: string;
   description: string;
 }

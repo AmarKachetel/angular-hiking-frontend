@@ -24,4 +24,18 @@ export class PhotoService {
     });
     return this.http.get<any[]>(this.userPhotosUrl, { headers });
   }
+
+  uploadPhoto(randoId: number, formData: FormData): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}/upload/${randoId}`, formData, { headers });
+  }
+
+  deletePhoto(photoId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`
+    });
+    return this.http.delete(`${this.apiUrl}/delete/${photoId}`, { headers });
+  }
 }

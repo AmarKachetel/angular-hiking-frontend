@@ -22,13 +22,16 @@ export class ContactComponent {
 
   constructor(private http: HttpClient) {}
 
-  onSubmit(contactForm: NgForm) { // Ajoutez NgForm comme paramètre
+  onSubmit(contactForm: NgForm) {
     // Réinitialiser les messages à chaque soumission de formulaire
     this.successMessage = null;
     this.errorMessage = null;
 
+    const headers = { 'Content-Type': 'application/json' };  // Assurer que le Content-Type est bien JSON
+    const body = JSON.stringify(this.contactData);
+
     // Envoyer la requête HTTP POST
-    this.http.post('http://localhost:8000/api/contact', this.contactData, { responseType: 'text' })
+    this.http.post('http://localhost:8000/api/contact', body, { headers, responseType: 'text' })
       .subscribe({
         next: (response) => {
           this.successMessage = 'Message envoyé et enregistré avec succès.';
@@ -40,5 +43,6 @@ export class ContactComponent {
           console.error('Erreur complète:', error); // Affiche l'erreur complète pour le débogage
         }
       });
-  }
+}
+
 }

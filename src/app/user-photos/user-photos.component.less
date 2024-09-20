@@ -20,6 +20,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  position: relative;
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
 }
 
 .photo-item img {
@@ -45,4 +50,28 @@ p {
   color: var(--text-secondary);
   font-size: 18px;
   margin-top: 20px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darkred;
+  }
+}
+
+.snackbar-success {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336; /* Red */
+  color: white;
 }

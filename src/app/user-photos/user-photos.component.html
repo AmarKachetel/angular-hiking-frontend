@@ -4,6 +4,7 @@
       <div *ngFor="let photo of photos" class="photo-item">
         <img [src]="'http://localhost:8000' + photo.url" alt="Photo de randonnée">
         <p>{{ photo.description }}</p>
+        <button (click)="deletePhoto(photo.id)" class="delete-button">Supprimer</button>
       </div>
     </div>
   </div>

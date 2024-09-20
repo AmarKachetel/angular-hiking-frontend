@@ -1,3 +1,11 @@
+@primary-color: #4CAF50;
+@secondary-color: #FF5722;
+@input-border-color: #CCCCCC;
+@input-focus-border-color: #FF5722;
+@background-color: #f9f9f9;
+@input-padding: 10px;
+@border-radius: 5px;
+
 .randos-container {
   padding: 20px;
   max-width: 1200px;
@@ -64,4 +72,48 @@ h3 {
 p {
   margin: 5px 0;
   color: var(--text-secondary);
+}
+
+
+.rando-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:first-of-type {
+      background-color: @primary-color;
+      color: white;
+
+      &:hover {
+        background-color: darken(@primary-color, 10%);
+      }
+    }
+
+    &:last-of-type {
+      background-color: @secondary-color;
+      color: white;
+
+      &:hover {
+        background-color: darken(@secondary-color, 10%);
+      }
+    }
+  }
+}
+
+.snackbar-success {
+  background-color: #4caf50; /* Success: Green */
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336; /* Error: Red */
+  color: white;
 }
