@@ -22,8 +22,29 @@
       <div class="rando-actions">
         <button (click)="triggerFileInput(rando.id)">Ajouter Photo</button>
         <input type="file" #fileInput (change)="uploadPhoto($event, rando.id)" style="display: none;">
-        <button (click)="addReview(rando.id)">Ajouter un Avis</button>
-      </div>      
+        
+        <!-- Button to show reviews -->
+        <button (click)="toggleAvis(rando.id)">Ajouter Avis ({{ avisCount[rando.id] || 0 }})</button>
+
+
+      
+    </div>
+    <!-- Section to add a new review -->
+    <div *ngIf="showReviewForm[rando.id]" class="add-avis">
+      <h4>Ajouter un avis</h4>
+    
+      <!-- Stars Rating -->
+      <div class="rating">
+        <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" 
+              (click)="setRating(rando.id, star)" 
+              class="star"
+              [class.filled]="star <= avisForm[rando.id].note">
+          &#9733; <!-- This is the HTML entity for a filled star -->
+        </span>
+      </div>
+    
+      <textarea [(ngModel)]="avisForm[rando.id].commentaire" placeholder="Votre commentaire"></textarea>
+      <button (click)="addAvis(rando.id)">Ajouter</button>
     </div>
   </div>
 

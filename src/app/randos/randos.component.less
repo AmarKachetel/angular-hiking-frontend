@@ -58,10 +58,118 @@
 
 h3 {
   margin-top: 0;
-  color: var(--secondary-color);
+  color: #FF5722; /* Couleur secondaire */
 }
 
 p {
   margin: 5px 0;
-  color: var(--text-secondary);
+  color: #757575; /* Couleur du texte secondaire */
+}
+
+/* Boutons et actions */
+.rando-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:first-of-type {
+      background-color: #4CAF50; /* Vert pour "Ajouter Photo" */
+      color: white;
+
+      &:hover {
+        background-color: #388E3C; /* Vert foncé au hover */
+      }
+    }
+
+    &:last-of-type {
+      background-color: #FF5722; /* Orange pour "Avis" */
+      color: white;
+
+      &:hover {
+        background-color: #E64A19; /* Orange foncé au hover */
+      }
+    }
+  }
+}
+
+/* Styles pour les notifications Snackbar */
+.snackbar-success {
+  background-color: #4caf50; /* Succès : vert */
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336; /* Erreur : rouge */
+  color: white;
+}
+
+/* Section pour afficher les avis */
+.avis-list {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+
+  .avis-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+
+    p {
+      margin: 5px 0;
+      color: #757575; /* Couleur du texte secondaire */
+    }
+
+    strong {
+      color: #4CAF50; /* Vert pour le nom d'utilisateur */
+    }
+  }
+}
+
+/* Ajouter un avis */
+.add-avis {
+  margin-top: 15px;
+
+  h4 {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+
+  textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: #FF5722;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #E64A19;
+    }
+  }
 }

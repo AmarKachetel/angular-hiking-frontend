@@ -117,3 +117,58 @@ p {
   background-color: #f44336; /* Error: Red */
   color: white;
 }
+
+
+.add-avis {
+  margin-top: 10px;
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid @input-border-color;
+    border-radius: @border-radius;
+    resize: none;
+
+    &:focus {
+      border-color: @input-focus-border-color;
+      outline: none;
+    }
+  }
+
+  .rating {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+
+    .star {
+      font-size: 30px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &.filled {
+        color: @primary-color; /* Couleur pour les étoiles remplies */
+      }
+
+      &:hover {
+        color: darken(@primary-color, 10%);
+      }
+    }
+  }
+
+  button {
+    background-color: @primary-color;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: @border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(@primary-color, 10%);
+    }
+  }
+}
+
+
+
