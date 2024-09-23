@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   isAdmin: boolean = false; 
   adminMenuOpen: boolean = false; 
   mobileMenuOpen: boolean = false; 
-  
+
   constructor(private router: Router, private sessionService: SessionService, private authService: AuthService) { }
 
   ngOnInit() {
@@ -29,6 +29,21 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = !!token;
     this.username = this.sessionService.getUsername();
     this.isAdmin = this.authService.isAdmin(); 
+
+    // Écouter le redimensionnement pour gérer le menu
+    this.checkScreenSize();
+  }
+
+  // Ajoutez une méthode pour surveiller les changements de taille de l'écran
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    if (window.innerWidth > 768) {
+      this.mobileMenuOpen = false; // Fermer le menu mobile sur grands écrans
+    }
   }
 
   toggleMenu() {
@@ -41,8 +56,14 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleAdminMenu() {
-    this.adminMenuOpen = !this.adminMenuOpen;
-    this.menuOpen = false; 
+    if (this.adminMenuOpen) {
+      this.adminMenuOpen = false;
+    } else {
+      // On ferme d'abord le menu utilisateur, s'il est ouvert
+      this.menuOpen = false;
+      // Puis on ouvre le menu admin
+      this.adminMenuOpen = true;
+    }
   }
 
   toggleMobileMenu() {
@@ -72,7 +93,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-   @HostListener('document:click', ['$event'])
+  @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (!target.closest('.user-menu') && !target.closest('.admin-menu') && !target.closest('.burger-menu')) {

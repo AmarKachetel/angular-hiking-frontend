@@ -21,8 +21,10 @@
       </div>
       <p class="rando-description">{{ rando.description }}</p>
 
-      <!-- Bouton pour afficher les avis -->
-      <button (click)="toggleAvis(rando.id)">Voir les Avis ({{ avisCount[rando.id] || 0 }})</button>
+      <!-- Bouton pour afficher les avis avec style personnalisé -->
+      <button (click)="toggleAvis(rando.id)" class="avis-button">
+        Voir les Avis ({{ avisCount[rando.id] || 0 }})
+      </button>
 
       <!-- Section pour afficher les avis -->
       <div *ngIf="avisList[rando.id]" class="avis-list">

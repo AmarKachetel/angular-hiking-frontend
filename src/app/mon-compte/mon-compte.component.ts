@@ -19,4 +19,5 @@ export class MonCompteComponent implements OnInit {
   ngOnInit(): void {
     this.username = this.sessionService.getUsername(); // Récupère le nom d'utilisateur depuis le service de session
   }
+  
 }

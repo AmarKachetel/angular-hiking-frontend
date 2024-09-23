@@ -1,11 +1,17 @@
-<div class="moderate-reviews">
-    <h2>Modération des Avis</h2>
-    <ul>
-      <li *ngFor="let review of reviews">
-        <p>{{ review.content }}</p>
-        <button (click)="approveReview(review.id)">Approuver</button>
-        <button (click)="deleteReview(review.id)">Supprimer</button>
-      </li>
-    </ul>
+<div class="admin-avis-container">
+  <h1>Modération des avis</h1>
+
+  <div *ngIf="avisList.length === 0">
+    <p>Aucun avis en attente de modération.</p>
   </div>
-  
+
+  <div *ngFor="let avis of avisList" class="avis-item">
+    <p><strong>{{ avis.userName }}</strong> - {{ avis.date }} - Note: {{ avis.note }}/5</p>
+    <p>{{ avis.commentaire }}</p>
+    
+    <div class="actions">
+      <button (click)="approveAvis(avis.id)">Approuver</button>
+      <button (click)="rejectAvis(avis.id)">Rejeter</button>
+    </div>
+  </div>
+</div>

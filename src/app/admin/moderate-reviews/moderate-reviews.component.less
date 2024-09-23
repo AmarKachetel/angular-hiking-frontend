@@ -1,42 +1,44 @@
-.moderate-reviews {
-    h2 {
-      margin-bottom: 20px;
-    }
-  
-    ul {
-      list-style-type: none;
-      padding: 0;
-  
-      li {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-        button {
-          margin-left: 10px;
-          padding: 5px 10px;
-          color: #fff;
-          background-color: #5cb85c;
-          border: none;
-          cursor: pointer;
-  
+.admin-avis-container {
+  padding: 20px;
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .avis-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    
+    .actions {
+      margin-top: 10px;
+      button {
+        margin-right: 10px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:first-of-type {
+          background-color: #4CAF50;
+          color: white;
+
           &:hover {
-            background-color: #4cae4c;
+            background-color: #45a049;
           }
-          
-          &:last-child {
-            background-color: #d9534f;
-  
-            &:hover {
-              background-color: #c9302c;
-            }
+        }
+
+        &:last-of-type {
+          background-color: #f44336;
+          color: white;
+
+          &:hover {
+            background-color: #e53935;
           }
         }
       }
     }
   }
-  
+}

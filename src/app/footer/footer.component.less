@@ -1,10 +1,156 @@
 .footer {
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  background-color: var(--secondary-color);
-  color: #FFFFFF;
-  position: relative;
-  bottom: 0;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  background-color: #F8F8F8;
+  border-top: 1px solid #E0E0E0;
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      flex-direction: column; /* Stack content vertically on smaller screens */
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .footer-logo {
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 14px;
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
+        align-items: center;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+
+      @media (max-width: 768px) {
+        flex-direction: column; /* Stack links vertically on smaller screens */
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .footer-column {
+        h4 {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            margin-bottom: 8px;
+
+            a {
+              text-decoration: none;
+              color: #666;
+              font-size: 14px;
+
+              &:hover {
+                color: #007BFF;
+              }
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          margin-bottom: 20px; /* Add spacing between columns on mobile */
+        }
+      }
+
+      .footer-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .register-btn, .login-btn {
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+
+        .register-btn {
+          background-color: #007BFF;
+          color: white;
+        }
+
+        .login-btn {
+          background-color: transparent;
+          border: 1px solid #007BFF;
+          color: #007BFF;
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+          button {
+            width: 100%; /* Make buttons full-width on mobile */
+          }
+        }
+      }
+    }
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid #E0E0E0;
+    margin-top: 20px;
+
+    span {
+      margin-right: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+
+      a {
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 10px;
+      span {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

@@ -1,64 +1,80 @@
 <mat-toolbar color="primary" class="mat-elevation-z4">
-    <div class="brand" (click)="handleLogoClick()">
-      <img src="assets/icons/Randinou.png" alt="Hiking Icon" class="brand-icon">
-      <div class="brand-text">
-        <span class="brand-title">Randinou <span class="brand-highlight">Adventures</span></span>
-        <span class="brand-subtitle">Préparer et partager ses randos</span>
+  <div class="brand" (click)="handleLogoClick()">
+    <img src="assets/icons/Randinou.png" alt="Hiking Icon" class="brand-icon">
+    <div class="brand-text">
+      <span class="brand-title">Randinou <span class="brand-highlight">Adventures</span></span>
+      <span class="brand-subtitle">Préparer et partager ses randos</span>
+    </div>
+  </div>
+
+  <!-- Burger menu button for small screens -->
+  <button mat-icon-button class="burger-menu" (click)="toggleMobileMenu()" aria-label="Menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Desktop toolbar buttons (hidden on mobile) -->
+  <div class="toolbar-buttons" *ngIf="!mobileMenuOpen">
+    <span class="spacer"></span>
+    <button mat-button class="toolbar-button">Tracer un circuit</button>
+    <button mat-button class="toolbar-button" *ngIf="isLoggedIn" [routerLink]="['/reservation']">Réservation de randonnée</button>
+    <button mat-button class="toolbar-button" [routerLink]="['/randos']">Randonnées</button>
+    <button mat-button class="toolbar-button" [routerLink]="['/contact']">Contact</button>
+
+    <!-- User menu -->
+    <ng-container *ngIf="isLoggedIn; else guestLinks">
+      <div class="user-menu" [ngClass]="{'open': menuOpen}">
+        <button mat-button class="toolbar-button" (click)="toggleMenu()">
+          {{ username }} <mat-icon>{{ menuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+        <div *ngIf="menuOpen" class="dropdown-menu">
+          <ul>
+            <li (click)="navigateTo('user-randos')">Mes Randonnées</li>
+            <li (click)="navigateTo('user-reservations')">Mes Réservations</li>
+            <li (click)="navigateTo('photos')">Mes Photos</li>
+            <li (click)="navigateTo('posts')">Mes Posts</li>
+            <li (click)="navigateTo('profile')">Mon Profil</li>
+            <li (click)="logout()">Déconnexion</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  
-    <!-- Bouton de menu burger pour petits écrans -->
-    <button mat-icon-button class="burger-menu" (click)="toggleMobileMenu()" aria-label="Menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-  
-    <!-- Menu pour les grands écrans -->
-    <div class="toolbar-buttons" *ngIf="!mobileMenuOpen">
-      <span class="spacer"></span>
-      <button mat-button class="toolbar-button">Tracer un circuit</button>
-      <button mat-button class="toolbar-button" *ngIf="isLoggedIn" [routerLink]="['/reservation']">Réservation de randonnée</button>
-      <button mat-button class="toolbar-button" [routerLink]="['/randos']">Randonnées</button>
-      <button mat-button class="toolbar-button" [routerLink]="['/contact']">Contact</button>
-    
-      <ng-container *ngIf="isLoggedIn; else guestLinks">
-        <!-- Menu utilisateur -->
-        <div class="user-menu" [ngClass]="{'open': menuOpen}">
-          <button mat-button class="toolbar-button" (click)="toggleMenu()">
-            {{ username }} <span [ngClass]="{'arrow-up': menuOpen, 'arrow-down': !menuOpen}">▼</span>
-          </button>
-          <div *ngIf="menuOpen" class="dropdown-menu">
-            <ul>
-              <li (click)="navigateTo('user-randos')">Mes Randonnées</li>
-              <li (click)="navigateTo('user-reservations')">Mes Réservations</li>
-              <li (click)="navigateTo('photos')">Mes Photos</li>
-              <li (click)="navigateTo('posts')">Mes Posts</li>
-              <li (click)="navigateTo('profile')">Mon Profil</li>
-              <li (click)="logout()">Déconnexion</li>
-            </ul>
-          </div>
+
+      <!-- Admin menu -->
+      <div *ngIf="isAdmin" class="admin-menu">
+        <button mat-button class="toolbar-button" (click)="toggleAdminMenu()">
+          Admin Menu <mat-icon>{{ adminMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+        <div *ngIf="adminMenuOpen" class="dropdown-menu">
+          <ul>
+            <li (click)="navigateTo('admin/validate-user')">Validate User</li>
+            <li (click)="navigateTo('admin/manage-randos')">Manage Randos</li>
+            <li (click)="navigateTo('admin/moderate-reviews')">Moderate Reviews</li>
+          </ul>
         </div>
-    
-        <!-- Menu administrateur -->
-        <div *ngIf="isAdmin" class="admin-menu">
-          <button mat-button class="toolbar-button" (click)="toggleAdminMenu()">
-            Admin Menu <span [ngClass]="{'arrow-up': adminMenuOpen, 'arrow-down': !adminMenuOpen}">▼</span>
-          </button>
-          <div *ngIf="adminMenuOpen" class="dropdown-menu">
-            <ul>
-              <li (click)="navigateTo('admin/validate-user')">Validate User</li>
-              <li (click)="navigateTo('admin/manage-randos')">Manage Randos</li>
-              <li (click)="navigateTo('admin/moderate-reviews')">Moderate Reviews</li>
-            </ul>
-          </div>
-        </div>
-      </ng-container>
-    
-      <!-- Correction du nom de l'ancre pour ng-template -->
-      <ng-template #guestLinks>
-        <a mat-button class="toolbar-button" [routerLink]="['/register']">Inscription</a>
-        <a mat-button class="toolbar-button" [routerLink]="['/login']">Connexion</a>
-      </ng-template>
-    </div>
-    
-  </mat-toolbar>
-  
+      </div>
+    </ng-container>
+
+    <!-- Guest links for login/register -->
+    <ng-template #guestLinks>
+      <a mat-button class="toolbar-button" [routerLink]="['/register']">Inscription</a>
+      <a mat-button class="toolbar-button" [routerLink]="['/login']">Connexion</a>
+    </ng-template>
+  </div>
+
+<!-- Mobile menu (visible on small screens) -->
+<div *ngIf="mobileMenuOpen" class="mobile-menu">
+  <button mat-button class="toolbar-button" (click)="navigateTo('user-randos')">Mes Randonnées</button>
+  <button mat-button class="toolbar-button" (click)="navigateTo('user-reservations')">Mes Réservations</button>
+  <button mat-button class="toolbar-button" (click)="navigateTo('photos')">Mes Photos</button>
+  <button mat-button class="toolbar-button" (click)="navigateTo('posts')">Mes Posts</button>
+  <button mat-button class="toolbar-button" (click)="navigateTo('profile')">Mon Profil</button>
+  <button mat-button class="toolbar-button" (click)="logout()">Déconnexion</button>
+
+  <!-- Si l'utilisateur est admin, ajoute le menu admin -->
+  <ng-container *ngIf="isAdmin">
+    <button mat-button class="toolbar-button" (click)="navigateTo('admin/validate-user')">Validate User</button>
+    <button mat-button class="toolbar-button" (click)="navigateTo('admin/manage-randos')">Manage Randos</button>
+    <button mat-button class="toolbar-button" (click)="navigateTo('admin/moderate-reviews')">Moderate Reviews</button>
+  </ng-container>
+</div>
+
+</mat-toolbar>

@@ -70,15 +70,30 @@ export class AdminService {
     });
     return this.http.delete(`${this.apiUrl}/randos/${id}`, { headers });
   }
-  approveReview(reviewId: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/reviews/${reviewId}/approve`, {});
+
+
+  getAvisToModerate(): Observable<any[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<any[]>(`${this.apiUrl}/avis`, { headers });
   }
 
-  deleteReview(reviewId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/reviews/${reviewId}`);
+  approveAvis(avisId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.apiUrl}/avis/approve/${avisId}`, {}, { headers });
   }
-
-  getReviews(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/reviews`);
+  
+  rejectAvis(avisId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,  
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.apiUrl}/avis/reject/${avisId}`, {}, { headers });
   }
+  
 }
