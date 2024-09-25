@@ -35,6 +35,10 @@ export class ManageRandosComponent implements OnInit {
   this.router.navigate(['/admin/edit-rando', rando.id]); // Naviguer vers le composant de modification
 }
 
+  navigateToAddRando() {
+    this.router.navigate(['/admin/add-rando']);
+  }
+
   // Méthode pour supprimer une randonnée
   deleteRando(id: number) {
     this.adminService.deleteRando(id).subscribe(

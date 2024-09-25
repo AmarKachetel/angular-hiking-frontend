@@ -29,7 +29,15 @@
       <!-- Section pour afficher les avis -->
       <div *ngIf="avisList[rando.id]" class="avis-list">
         <div *ngFor="let avis of avisList[rando.id]" class="avis-item">
-          <p><strong>{{ avis.userName }}</strong> - {{ avis.date }} - Note: {{ avis.note }}/5</p>
+          <p><strong>{{ avis.userName }}</strong> - {{ avis.date }}</p>
+          
+          <!-- Display stars instead of Note -->
+          <div class="rating">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.filled]="star <= avis.note">
+              &#9733;
+            </span>
+          </div>
+
           <p>{{ avis.commentaire }}</p>
         </div>
       </div>

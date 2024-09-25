@@ -14,6 +14,6 @@ export class AppComponent {
   title = 'Randinou Adventures : idées de randonnée';
 
   constructor() {
-    console.log('AppComponent initialized');
+    
   }
 }

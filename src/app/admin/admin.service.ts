@@ -55,6 +55,14 @@ export class AdminService {
     return this.http.get(`${this.apiUrl}/randos`);
   }
 
+  createRando(rando: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.sessionService.getToken()}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.apiUrl}/randos`, rando, { headers });
+  }
+  
   updateRando(id: number, data: any): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.sessionService.getToken()}`,  

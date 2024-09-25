@@ -24,7 +24,7 @@
     <ng-container *ngIf="isLoggedIn; else guestLinks">
       <div class="user-menu" [ngClass]="{'open': menuOpen}">
         <button mat-button class="toolbar-button" (click)="toggleMenu()">
-          {{ username }} <mat-icon>{{ menuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+          Mon compte<mat-icon>{{ menuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
         </button>
         <div *ngIf="menuOpen" class="dropdown-menu">
           <ul>

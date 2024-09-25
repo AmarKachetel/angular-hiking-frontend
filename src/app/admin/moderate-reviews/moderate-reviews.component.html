@@ -5,13 +5,22 @@
     <p>Aucun avis en attente de modération.</p>
   </div>
 
-  <div *ngFor="let avis of avisList" class="avis-item">
-    <p><strong>{{ avis.userName }}</strong> - {{ avis.date }} - Note: {{ avis.note }}/5</p>
+  <div *ngFor="let avis of avisList" class="avis-item mat-elevation-z2">
+    <p><strong>{{ avis.userName }}</strong> - {{ avis.date }}</p>
+
+    <!-- Star rating display -->
+    <div class="rating">
+      <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.filled]="star <= avis.note">
+        &#9733;
+      </span>
+      <span class="note-text">{{ avis.note }}/5</span>
+    </div>
+
     <p>{{ avis.commentaire }}</p>
-    
+
     <div class="actions">
-      <button (click)="approveAvis(avis.id)">Approuver</button>
-      <button (click)="rejectAvis(avis.id)">Rejeter</button>
+      <button class="approve-btn" (click)="approveAvis(avis.id)">Approuver</button>
+      <button class="reject-btn" (click)="rejectAvis(avis.id)">Rejeter</button>
     </div>
   </div>
 </div>
